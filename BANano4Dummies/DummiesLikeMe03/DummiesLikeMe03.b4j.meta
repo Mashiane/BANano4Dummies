@@ -9,4 +9,4 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=
 NavigationStack=BANanoHTML,AppendSmall,1664,0,BANanoHTML,AppendH5,1670,0,BANanoHTML,AppendH6,1675,0,BANanoHTML,CreateInputSearch,1682,0,BANanoHTML,AppendParagraph,415,0,BANanoHTML,AddHeading,411,0,pgIndex,Process_Globals,1,0,pgIndex,Show,12,5,pgIndex,SectionMarkup1,48,0,pgIndex,SectionMarkup2,49,6
 SelectedBuild=0
-VisibleModules=2,1
+VisibleModules=1,2

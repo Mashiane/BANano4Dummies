@@ -1,0 +1,48 @@
+﻿AppType=JavaFX
+Build1=Default,b4j.example
+Group=Default Group
+Library1=jcore
+Library2=jfx
+Library3=banano
+Module1=page2
+Module2=page1
+NumberOfFiles=0
+NumberOfLibraries=3
+NumberOfModules=2
+Version=7.51
+@EndOfDesignText@
+#Region Project Attributes 
+#End Region
+
+Sub Process_Globals
+	Private BANano As BANano  'ignore
+	Private fx As JFX
+End Sub
+
+Sub AppStart (Form1 As Form, Args() As String)
+	'initialize banano object with event, appname (must not have space) and version
+	BANano.Initialize("BANano", "MyApp",DateTime.now)
+	'the name of the html file
+	BANano.HTML_NAME = "index.html"
+	'the title of the page
+	BANano.Header.Title = "MyApp"
+	'do not use service workers for PWA
+	BANano.TranspilerOptions.UseServiceWorker = False
+	'transpile b4j code to html, css and javascript and store output in File.DirApp
+	'the webiste/website will be loaded in \Objects\MyApp where you saved your project
+	BANano.Build(File.dirApp)
+	'open the compiled index file
+	Dim URL As String = File.GetUri(File.Combine(File.dirapp,"MyApp"),"index.html")
+	fx.ShowExternalDocument(URL)
+	ExitApplication
+End Sub
+
+'Return true to allow the default exceptions handler to handle the uncaught exception.
+Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
+	Return True
+End Sub
+
+Sub BANano_Ready
+	'show the initial page we want to see
+	page1.Show
+End Sub

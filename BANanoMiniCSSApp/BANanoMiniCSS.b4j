@@ -1,0 +1,98 @@
+﻿AppType=JavaFX
+Build1=Default,b4j.Mashy.BANanoSQLUtilsDemo
+File1=alasql.min.js
+File2=helloalain.jpg
+File3=james.jpg
+File4=julie.jpg
+File5=michael.jpg
+File6=mike.jpg
+File7=mini.min.css
+File8=olivia.jpg
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+Group=Default Group
+Library1=jcore
+Library2=jfx
+Library3=banano
+Library4=bananopostprocessor
+Module1=pgIndex
+Module2=MiniCSS
+Module3=BANanoMiniCSSCode
+Module4=MiniCSSModal
+Module5=MiniCSSAccordion
+Module6=BANanoSQLUtils
+Module7=UOENowData
+Module8=UOENowHTML
+Module9=MiniCSSDrawer
+NumberOfFiles=8
+NumberOfLibraries=4
+NumberOfModules=9
+Version=7.51
+@EndOfDesignText@
+#Region Project Attributes 
+#End Region
+
+Sub Process_Globals
+	Public BANano As BANano 'ignore
+	Public AppName As String = "BANanoMiniCssCodeApp"
+	Private Publish As String
+	Private BP As BANanoPostProcessor
+	Private SQL As BANanoSQL
+End Sub
+
+Sub AppStart (Form1 As Form, Args() As String)
+	Publish = "C:\xampp\htdocs"
+	Publish = "c:\laragon\www"
+	Dim version As String = DateTime.now
+	Dim appFile As String = $"app${version}.js"$
+	BANano.Initialize("BANano", AppName,1)
+	BANano.HTML_NAME = "index.html"
+	BANano.Header.Title = AppName
+	BANano.JAVASCRIPT_NAME = appFile
+	BANano.TranspilerOptions.UseServiceWorker = False
+	BANano.Header.AddCSSFile("https://fonts.googleapis.com/css?family=Inconsolata:400,700|Poppins:400,400i,500,700,700i&amp;subset=latin-ext")
+	BANano.Header.AddCSSFile("mini.min.css")
+	BANano.Build(Publish)
+	'post processor
+	BP.Initialize
+	BP.PublishPath = Publish
+	BP.ShortName = AppName
+	BP.AssetsPath = BANano.ASSETS_FOLDER
+	BP.ScriptsPath = BANano.SCRIPTS_FOLDER
+	BP.StylesPath = BANano.STYLES_FOLDER
+	BP.ScriptFile = BANano.JAVASCRIPT_NAME
+	BP.Open(True)
+	ExitApplication
+End Sub
+
+'Return true to allow the default exceptions handler to handle the uncaught exception.
+Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
+	Return True
+End Sub
+
+' HERE STARTS YOUR APP
+Sub BANano_Ready()
+	SQL.OpenWait("demo1","demo1")
+	'create forms table
+	Dim tbl As Map = CreateMap()
+	tbl.Put("id", BANanoSQLUtils.DB_STRING)
+	tbl.Put("json", BANanoSQLUtils.DB_STRING)
+	Dim qry As String = BANanoSQLUtils.CreateTable("forms", tbl, "id", "")
+	SQL.ExecuteWait(qry,Null)
+	'create items table
+	Dim els As Map = CreateMap()
+	els.Put("id", BANanoSQLUtils.DB_STRING)
+	els.Put("json", BANanoSQLUtils.DB_STRING)
+	els.Put("tabindex", BANanoSQLUtils.DB_INT)
+	els.put("parentid", BANanoSQLUtils.DB_STRING)
+	Dim qry As String = BANanoSQLUtils.CreateTable("items", els, "id", "")
+	SQL.ExecuteWait(qry,Null)
+	'
+	pgIndex.init
+End Sub

@@ -1,12 +1,15 @@
 ﻿ModuleBookmarks0=
 ModuleBookmarks1=
 ModuleBookmarks2=
+ModuleBookmarks3=
 ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleBreakpoints2=
+ModuleBreakpoints3=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
-NavigationStack=pgIndex,Show,65,0,pgIndex,Process_Globals,31,0
+ModuleClosedNodes3=
+NavigationStack=pgIndex,Show,65,0,pgIndex,Process_Globals,31,0,BANanoJQuery,Class_Globals,7,6,BANanoJQuery,Initialize,11,6
 SelectedBuild=0
-VisibleModules=1
+VisibleModules=1,3

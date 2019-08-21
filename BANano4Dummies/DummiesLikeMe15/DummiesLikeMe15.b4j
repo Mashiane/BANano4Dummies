@@ -1,7 +1,9 @@
 ﻿AppType=JavaFX
 Build1=Default,b4j.example
 File1=image001.jpg
+File2=jquery-3.4.1.min.js
 FileGroup1=Default Group
+FileGroup2=Default Group
 Group=Default Group
 Library1=jcore
 Library2=jfx
@@ -9,7 +11,7 @@ Library3=banano
 Module1=pgIndex
 Module2=BANanoHTML
 Module3=BANanoJQuery
-NumberOfFiles=1
+NumberOfFiles=2
 NumberOfLibraries=3
 NumberOfModules=3
 Version=7.51
@@ -29,6 +31,8 @@ Sub AppStart (Form1 As Form, Args() As String)
 	BANano.HTML_NAME = "index.html"
 	'the title of the page
 	BANano.Header.Title = "MyApp"
+	'add jquery
+	BANano.Header.AddJavascriptFile("jquery-3.4.1.min.js")
 	'do not use service workers for PWA
 	BANano.TranspilerOptions.UseServiceWorker = False
 	'transpile b4j code to html, css and javascript and store output in File.DirApp

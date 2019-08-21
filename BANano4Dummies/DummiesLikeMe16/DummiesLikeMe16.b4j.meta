@@ -12,4 +12,4 @@ ModuleClosedNodes2=
 ModuleClosedNodes3=
 NavigationStack=pgIndex,addTaskElement,78,6,BANanoJQuery,Class_Globals,2,0,BANanoJQuery,Initialize,11,0,BANanoJQuery,UseStrict,24,0,BANanoJQuery,SetValue,48,0,BANanoJQuery,GetValue,67,0,BANanoJQuery,SetTextBO,38,6,BANanoJQuery,Append,56,1,BANanoJQuery,Focus,64,0,pgIndex,addTask,68,6
 SelectedBuild=0
-VisibleModules=2
+VisibleModules=1

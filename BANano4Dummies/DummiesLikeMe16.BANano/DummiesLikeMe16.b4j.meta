@@ -10,6 +10,6 @@ ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
-NavigationStack=BANanoJQuery,UseStrict,24,0,BANanoJQuery,SetValue,48,0,BANanoJQuery,GetValue,67,0,BANanoJQuery,SetTextBO,38,6,BANanoJQuery,Append,56,1,BANanoJQuery,Focus,64,0,pgIndex,setStatus,72,0,pgIndex,addTask,57,6,pgIndex,Process_Globals,3,0,pgIndex,Show,8,0
+NavigationStack=BANanoJQuery,GetValue,67,0,BANanoJQuery,SetTextBO,38,6,BANanoJQuery,Append,56,1,BANanoJQuery,Focus,64,0,pgIndex,addTask,57,6,pgIndex,Show,8,0,pgIndex,Process_Globals,0,0,pgIndex,setStatus,68,0,pgIndex,addTaskElement,65,0,pgIndex,task_keypress,47,0
 SelectedBuild=0
 VisibleModules=1

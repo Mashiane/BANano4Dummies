@@ -95,25 +95,25 @@ End Sub
 
 Sub addTaskElement(taskName As String)
 	'delete button segment
-	Dim delete As BANanoObject = JQuery.createElement($"<button title="Delete" class='delete'>X</button>"$)
-	BANano.ToElement(delete).On("click", Me, "task_delete")
+	Dim delete As BANanoElement = JQuery.createElement($"<button title="Delete" class='delete'>X</button>"$)
+	delete.On("click", Me, "task_delete")
 	'edit button segment
-	Dim edit As BANanoObject = JQuery.createElement($"<button title="Edit" class='edit'>E</button>"$)
-	BANano.ToElement(edit).On("click", Me, "task_edit")
+	Dim edit As BANanoElement = JQuery.createElement($"<button title="Edit" class='edit'>E</button>"$)
+	edit.On("click", Me, "task_edit")
 	'move up button
-	Dim moveUp As BANanoObject = JQuery.createElement($"<button title="Up" class='move-up'>U</button>"$)
-	BANano.ToElement(moveUp).On("click", Me, "task_up")
+	Dim moveUp As BANanoElement = JQuery.createElement($"<button title="Up" class='move-up'>U</button>"$)
+	moveUp.On("click", Me, "task_up")
 	'move down button
-	Dim moveDown As BANanoObject = JQuery.createElement($"<button title="Down" class='move-down'>D</button>"$)
-	BANano.ToElement(moveDown).On("click", Me, "task_down")
+	Dim moveDown As BANanoElement = JQuery.createElement($"<button title="Down" class='move-down'>D</button>"$)
+	moveDown.On("click", Me, "task_down")
 	'span to show the item
-	Dim span As String = $"<span class='task-name'> ${taskName}</span>"$
+	Dim span As BANanoElement = JQuery.createElement($"<span class='task-name'> ${taskName}</span>"$)
 	'create an empty list item
-	Dim task As BANanoObject = JQuery.createElement($"<li class="task"></li>"$)
+	Dim task As BANanoElement = JQuery.createElement($"<li class="task"></li>"$)
 	'join other elements
 	JQuery.AppendMulti(task, Array(delete, edit, moveUp, moveDown, span))
 	'add to the list
-	JQuery.Append("#task-list", task)
+	JQuery.Append("#task-list", BANano.ToObject(task))
 End Sub
 
 'when a task is being edited

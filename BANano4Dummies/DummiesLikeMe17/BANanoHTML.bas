@@ -107,120 +107,446 @@ Sub SetAttr(attr As String, val As String) As BANanoHTML
 End Sub
 
 'set role button
-Sub SetRoleButton(b As Boolean) As BANanoHTML   'ignore
-	SetROLE("button")
+Sub SetAttrRoleButton(b As Boolean) As BANanoHTML   'ignore
+	SetAttrROLE("button")
 	Return Me
 End Sub
 
-Sub SetFontFamily(f As Object) As BANanoHTML   'ignore
+Sub SetStyleFontFamily(f As Object) As BANanoHTML   'ignore
 	SetStyle("font-family", f)
 	Return Me
 End Sub
 
-Sub SetFontSize(f As Object) As BANanoHTML   'ignore
+
+Sub SetStyleFontWeight(f As Object) As BANanoHTML   'ignore
+	SetStyle("font-weight", f)
+	Return Me
+End Sub
+
+
+Sub SetStyleFontWeightBold(f As Boolean) As BANanoHTML   'ignore
+	SetStyle("font-weight", "bold")
+	Return Me
+End Sub
+
+Sub SetStyleFontVariant(f As Object) As BANanoHTML   'ignore
+	SetStyle("font-variant", f)
+	Return Me
+End Sub
+
+Sub SetStyleFontWeightNormal(f As Boolean) As BANanoHTML   'ignore
+	SetStyle("font-weight", "normal")
+	Return Me
+End Sub
+
+
+Sub SetStyleFontStyle(f As Object) As BANanoHTML   'ignore
+	SetStyle("font-style", f)
+	Return Me
+End Sub
+
+Sub SetStyleFontSize(f As Object) As BANanoHTML   'ignore
 	SetStyle("font-size", MakePx(f))
 	Return Me
 End Sub
 
 
-Sub SetTextAlignCenter(f As Boolean) As BANanoHTML   'ignore
+Sub SetStyleTextAlignCenter(f As Boolean) As BANanoHTML   'ignore
 	SetStyle("text-align", "center")
 	Return Me
 End Sub
 
+
+Sub SetStyleTextIndent(f As Object) As BANanoHTML   'ignore
+	SetStyle("text-indent", MakePx(f))
+	Return Me
+End Sub
+
+Sub SetStyleTextTransform(f As Object) As BANanoHTML   'ignore
+	SetStyle("text-transform", f)
+	Return Me
+End Sub
+
+Sub SetStyleLetterSpacing(f As Object) As BANanoHTML   'ignore
+	SetStyle("letter-spacing", MakePx(f))
+	Return Me
+End Sub
+
+Sub SetStyleTextDecoration(f As Object) As BANanoHTML   'ignore
+	SetStyle("text-decoration", f)
+	Return Me
+End Sub
+
+Sub SetStyleTextShadow(f As Object) As BANanoHTML   'ignore
+	SetStyle("text-shadow", f)
+	Return Me
+End Sub
+
+Sub SetStyleLineHeight(f As Object) As BANanoHTML   'ignore
+	SetStyle("line-height", f)
+	Return Me
+End Sub
+
+
+Sub SetStyleWhiteSpace(f As Object) As BANanoHTML   'ignore
+	SetStyle("white-space", f)
+	Return Me
+End Sub
+
+Sub SetStyleVerticalAlign(f As Object) As BANanoHTML   'ignore
+	SetStyle("vertical-align", f)
+	Return Me
+End Sub
+
+Sub SetStyleDirection(f As Object) As BANanoHTML   'ignore
+	SetStyle("direction", f)
+	Return Me
+End Sub
+
+Sub SetStyleWordSpacing(f As Object) As BANanoHTML   'ignore
+	SetStyle("word-spacing", MakePx(f))
+	Return Me
+End Sub
+
+
 'set disabled
-Sub SetDisabled(b As Boolean) As BANanoHTML
+Sub SetAttrDisabled(b As Boolean) As BANanoHTML
 	If b Then AddLooseAttribute("disabled")
 	Return Me
 End Sub
 
-'set disabled
-Sub SetBackgroundColor(c As Object) As BANanoHTML
+'set background color
+Sub SetStyleBackgroundColor(c As Object) As BANanoHTML
 	SetStyle("background-color",c)
 	Return Me
 End Sub
 
-Sub SetColor(c As Object) As BANanoHTML
+
+'set background color
+Sub SetStyleBackgroundClip(c As Object) As BANanoHTML
+	SetStyle("background-clip",c)
+	Return Me
+End Sub
+
+
+'set background color
+Sub SetStyleBackgroundOrigin(c As Object) As BANanoHTML
+	SetStyle("background-origin",c)
+	Return Me
+End Sub
+
+'set the border radius
+Sub SetStyleBorderRadius(topLeft As String, topRight As String, bottomLeft As String, bottomRight As String) As BANanoHTML
+	Dim br As List
+	br.Initialize
+	br.Add(MakePx(topLeft))
+	br.Add(MakePx(topRight))
+	br.Add(MakePx(bottomLeft))
+	br.Add(MakePx(bottomRight))
+	'
+	Dim sbr As String = Join(" ", br)
+	SetStyle("border-radius", sbr)
+	Return Me
+End Sub
+
+'set border top left radius
+Sub SetStyleBorderTopLeftRadius(topLeft As String) As BANanoHTML
+	topLeft = MakePx(topLeft)
+	SetStyle("border-top-left-radius", topLeft)
+	Return Me
+End Sub
+
+Sub SetStyleBorderTopRightRadius(topRight As String) As BANanoHTML
+	topRight = MakePx(topRight)
+	SetStyle("border-top-right-radius", topRight)
+	Return Me
+End Sub
+
+Sub SetStyleBorderBottomLeftRadius(bottomLeft As String) As BANanoHTML
+	bottomLeft = MakePx(bottomLeft)
+	SetStyle("border-bottom-left-radius", bottomLeft)
+	Return Me
+End Sub
+
+Sub SetStyleBorderBottomRightRadius(bottomRight As String) As BANanoHTML
+	bottomRight = MakePx(bottomRight)
+	SetStyle("border-bottom-right-radius", bottomRight)
+	Return Me
+End Sub
+
+Sub SetStyleColor(c As Object) As BANanoHTML
 	SetStyle("color",c)
 	Return Me
 End Sub
 
-Sub SetImportant(b As Boolean) As BANanoHTML
+Sub SetStyleOutline(c As Object) As BANanoHTML
+	SetStyle("outline",c)
+	Return Me
+End Sub
+
+Sub SetStyleOutlineStyle(bs As Object) As BANanoHTML
+	SetStyle("outline-style",bs)
+	Return Me
+End Sub
+
+
+Sub SetStyleOutlineColor(bs As Object) As BANanoHTML
+	SetStyle("outline-color",bs)
+	Return Me
+End Sub
+
+Sub SetStyleOutlineWidth(bs As Object) As BANanoHTML
+	SetStyle("outline-width",MakePx(bs))
+	Return Me
+End Sub
+
+
+Sub SetStyleBorderStyle(bs As Object) As BANanoHTML
+	SetStyle("border-style",bs)
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleDotted(b As Boolean) As BANanoHTML
+	SetStyle("border-style","dotted")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleDashed(b As Boolean) As BANanoHTML
+	SetStyle("border-style","dashed")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleSolid(b As Boolean) As BANanoHTML
+	SetStyle("border-style","solid")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleDouble(b As Boolean) As BANanoHTML
+	SetStyle("border-style","double")
+	Return Me
+End Sub
+
+Sub SetStyleBorderWidth(b As String) As BANanoHTML
+	SetStyle("border-width",MakePx(b))
+	Return Me
+End Sub
+
+Sub SetStyleBorderLeftWidth(b As String) As BANanoHTML
+	SetStyle("border-left-width",MakePx(b))
+	Return Me
+End Sub
+
+Sub SetStyleBorderRightWidth(b As String) As BANanoHTML
+	SetStyle("border-right-width",MakePx(b))
+	Return Me
+End Sub
+
+Sub SetStyleBorderBottomWidth(b As String) As BANanoHTML
+	SetStyle("border-bottom-width",MakePx(b))
+	Return Me
+End Sub
+
+Sub SetStyleBorderTopWidth(b As String) As BANanoHTML
+	SetStyle("border-top-width",MakePx(b))
+	Return Me
+End Sub
+
+Sub SetStyleBorderColor(c As String) As BANanoHTML
+	SetStyle("border-color",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderLeftColor(c As String) As BANanoHTML
+	SetStyle("border-left-color",c)
+	Return Me
+End Sub
+
+
+Sub SetStyleBorderRightColor(c As String) As BANanoHTML
+	SetStyle("border-right-color",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderTopColor(c As String) As BANanoHTML
+	SetStyle("border-top-color",c)
+	Return Me
+End Sub
+
+
+Sub SetStyleBorderBottomColor(c As String) As BANanoHTML
+	SetStyle("border-bottom-color",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderLeftStyle(c As String) As BANanoHTML
+	SetStyle("border-left-style",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderRightStyle(c As String) As BANanoHTML
+	SetStyle("border-right-style",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderBottomStyle(c As String) As BANanoHTML
+	SetStyle("border-bottom-style",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderTopStyle(c As String) As BANanoHTML
+	SetStyle("border-top-style",c)
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleGroove(b As Boolean) As BANanoHTML
+	SetStyle("border-style","groove")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleRidge(b As Boolean) As BANanoHTML
+	SetStyle("border-style","ridge")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleInset(b As Boolean) As BANanoHTML
+	SetStyle("border-style","inset")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleOutset(b As Boolean) As BANanoHTML
+	SetStyle("border-style","outset")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleNone(b As Boolean) As BANanoHTML
+	SetStyle("border-style","none")
+	Return Me
+End Sub
+
+Sub SetStyleBorderStyleHidden(b As Boolean) As BANanoHTML
+	SetStyle("border-style","hidden")
+	Return Me
+End Sub
+
+Sub SetStyleImportant(b As Boolean) As BANanoHTML
 	IsImportant = b
 	Return Me
 End Sub
 
 'set style
 Sub SetStyle(prop As String, val As String) As BANanoHTML
-	AddStyle(prop,val)
+	AddStyleAttribute(prop,val)
 	Return Me
 End Sub
 
 'set width
-Sub SetWidth(w As Object) As BANanoHTML
+Sub SetAttrWidth(w As Object) As BANanoHTML
 	AddAttribute("width", w)
 	Return Me
 End Sub
 
 'set width
-Sub SetCSS(w As Object) As BANanoHTML
+Sub SetAttrCSS(w As Object) As BANanoHTML
 	AddAttribute("css", w)
 	Return Me
 End Sub
 
 'set height
-Sub SetHeight(h As String) As BANanoHTML
+Sub SetAttrHeight(h As String) As BANanoHTML
 	AddAttribute("height", h)
 	Return Me
 End Sub
 
-Sub SetPadding(PaddingBottom As String) As BANanoHTML
-	AddStyleAttribute("padding", MakePx(PaddingBottom))
+'set the padding style
+Sub SetStylePadding(PaddingBottom As String) As BANanoHTML
+	SetStyle("padding", MakePx(PaddingBottom))
 	Return Me
 End Sub
 
-Sub SetPaddingBottom(PaddingBottom As String) As BANanoHTML
-	AddStyleAttribute("padding-bottom", MakePx(PaddingBottom))
+'set the padding bottom style
+Sub SetStylePaddingBottom(PaddingBottom As String) As BANanoHTML
+	SetStyle("padding-bottom", MakePx(PaddingBottom))
 	Return Me
 End Sub
 
-Sub SetPaddingRight(PaddingRight As String) As BANanoHTML
-	AddStyleAttribute("padding-right", MakePx(PaddingRight))
+'set the padding right style
+Sub SetStylePaddingRight(PaddingRight As String) As BANanoHTML
+	SetStyle("padding-right", MakePx(PaddingRight))
 	Return Me
 End Sub
 
-Sub SetPaddingLeft(PaddingLeft As String) As BANanoHTML
-	AddStyleAttribute("padding-left", MakePx(PaddingLeft))
-	Return Me
-End Sub
-	
-Sub SetPaddingTop(PaddingTop As String) As BANanoHTML
-	AddStyleAttribute("padding-top", MakePx(PaddingTop))
+'set the padding left style
+Sub SetStylePaddingLeft(PaddingLeft As String) As BANanoHTML
+	SetStyle("padding-left", MakePx(PaddingLeft))
 	Return Me
 End Sub
 
-Sub SetMargin(MarginBottom As String) As BANanoHTML
-	AddStyleAttribute("margin", MakePx(MarginBottom))
+'set the padding top style	
+Sub SetStylePaddingTop(PaddingTop As String) As BANanoHTML
+	SetStyle("padding-top", MakePx(PaddingTop))
 	Return Me
 End Sub
 
-Sub SetMarginBottom(MarginBottom As String) As BANanoHTML
-	AddStyleAttribute("margin-bottom", MakePx(MarginBottom))
+'set the background image style
+Sub SetStyleBackgroundImage(imgURL As String) As BANanoHTML
+	SetStyle("background-image", $"url('${imgURL}')"$)
 	Return Me
 End Sub
 
-Sub SetMarginRight(MarginRight As String) As BANanoHTML
-	AddStyleAttribute("margin-right", MakePx(MarginRight))
+'set the background repeat style
+Sub SetStyleBackgroundRepeat(r As String) As BANanoHTML
+	SetStyle("background-repeat", r)
 	Return Me
 End Sub
 
-Sub SetMarginLeft(MarginLeft As String) As BANanoHTML
-	AddStyleAttribute("margin-left", MakePx(MarginLeft))
+'set the background size style
+Sub SetStyleBackgroundSize(r As String) As BANanoHTML
+	SetStyle("background-size", r)
 	Return Me
 End Sub
-	
-Sub SetMarginTop(MarginTop As String) As BANanoHTML
-	AddStyleAttribute("margin-top", MakePx(MarginTop))
+
+
+'set the background attachment style
+Sub SetStyleBackgroundAttachment(r As String) As BANanoHTML
+	SetStyle("background-attachment", r)
+	Return Me
+End Sub
+
+
+'set the background position style
+Sub SetStyleBackgroundPosition(r As String) As BANanoHTML
+	SetStyle("background-position", r)
+	Return Me
+End Sub
+
+
+'set the margin style
+Sub SetStyleMargin(MarginBottom As String) As BANanoHTML
+	SetStyle("margin", MakePx(MarginBottom))
+	Return Me
+End Sub
+
+'set margin bottom style
+Sub SetStyleMarginBottom(MarginBottom As String) As BANanoHTML
+	SetStyle("margin-bottom", MakePx(MarginBottom))
+	Return Me
+End Sub
+
+'set the margin right style
+Sub SetStyleMarginRight(MarginRight As String) As BANanoHTML
+	SetStyle("margin-right", MakePx(MarginRight))
+	Return Me
+End Sub
+
+'set margin left style
+Sub SetStyleMarginLeft(MarginLeft As String) As BANanoHTML
+	SetStyle("margin-left", MakePx(MarginLeft))
+	Return Me
+End Sub
+
+'set margin top style	
+Sub SetStyleMarginTop(MarginTop As String) As BANanoHTML
+	SetStyle("margin-top", MakePx(MarginTop))
 	Return Me
 End Sub
 
@@ -233,6 +559,7 @@ Sub UseTheme(sPrefix As String, themeName As String) As BANanoHTML
 	Return Me
 End Sub
 
+'set attribute
 Sub AddAttributeIfSet(prop As String, value As String) As BANanoHTML
 	If value <> "" Then
 		AddAttribute(prop,value)
@@ -240,45 +567,52 @@ Sub AddAttributeIfSet(prop As String, value As String) As BANanoHTML
 	Return Me
 End Sub
 
-Sub SetPlaceHolder(sPlaceholder As String) As BANanoHTML
+'set placeholder attribute
+Sub SetAttrPlaceHolder(sPlaceholder As String) As BANanoHTML
 	AddAttribute("placeholder",sPlaceholder)
 	Return Me
 End Sub
 
-Sub SetTITLE(stitle As String) As BANanoHTML
+'set title attribute
+Sub SetAttrTITLE(stitle As String) As BANanoHTML
 	AddAttribute("title", stitle)
 	Return Me
 End Sub
 
-Sub SetACTION(stitle As String) As BANanoHTML
+'set action attribute
+Sub SetAttrACTION(stitle As String) As BANanoHTML
 	AddAttribute("action", stitle)
 	Return Me
 End Sub
 
-Sub SetAUTOCOMPLETE(b As Boolean) As BANanoHTML
+'set autocomplete attribute
+Sub SetAttrAUTOCOMPLETE(b As Boolean) As BANanoHTML
 	If b Then
 		AddAttribute("autocomplete", "on")
 	End If
 	Return Me
 End Sub
 
-Sub SetAUTOFOCUS(b As Boolean) As BANanoHTML
+'set autofocus attribute
+Sub SetAttrAUTOFOCUS(b As Boolean) As BANanoHTML
 	If b Then AddLooseAttribute("autofocus")
 	Return Me
 End Sub
 
 
-Sub SetREL(rel As String) As BANanoHTML
+'set rel attribute
+Sub SetAttrREL(rel As String) As BANanoHTML
 	AddAttribute("rel", rel)
 	Return Me
 End Sub
 
-'clear contents
+'clear text contents
 Sub Clear As BANanoHTML
 	Contents.clear
 	Return Me
 End Sub
 
+'set attr on condition
 Sub AddPropertyOnCondition(bCondition As Boolean, attr As String, value As String) As BANanoHTML
 	If bCondition Then
 		AddAttribute(attr,value)
@@ -286,35 +620,36 @@ Sub AddPropertyOnCondition(bCondition As Boolean, attr As String, value As Strin
 	Return Me
 End Sub
 
-
+'set attribute
 Public Sub AddProperty(sKey As String, sValue As String) As BANanoHTML
 	AddAttribute(sKey, sValue)
 	Return Me
 End Sub
 
-Sub SetTARGET(sValue As String) As BANanoHTML
+'set target attribute
+Sub SetAttrTARGET(sValue As String) As BANanoHTML
 	If sValue.Trim = "" Then Return Me
 	AddAttribute("target",sValue)
 	Return Me
 End Sub
 
-Sub SetTargetBlank(b As Boolean) As BANanoHTML   'ignore
-	SetTARGET("_blank")
+Sub SetAttrTargetBlank(b As Boolean) As BANanoHTML   'ignore
+	SetAttrTARGET("_blank")
 	Return Me
 End Sub
 
-Sub SetTargetSelf(b As Boolean) As BANanoHTML    'ignore
-	SetTARGET("_self")
+Sub SetAttrTargetSelf(b As Boolean) As BANanoHTML    'ignore
+	SetAttrTARGET("_self")
 	Return Me
 End Sub
 	
-Sub SetTargetParent(b As Boolean) As BANanoHTML   'ignore
-	SetTARGET("_parent")
+Sub SetAttrTargetParent(b As Boolean) As BANanoHTML   'ignore
+	SetAttrTARGET("_parent")
 	Return Me
 End Sub
 	
-Sub SetTargetTop(b As Boolean) As BANanoHTML    'ignore
-	SetTARGET("_top")
+Sub SetAttrTargetTop(b As Boolean) As BANanoHTML    'ignore
+	SetAttrTARGET("_top")
 	Return Me
 End Sub
 
@@ -329,7 +664,7 @@ Sub ApplyStyle(sStyle As String) As BANanoHTML
 		attr = attr.trim
 		val = val.trim
 		If attr <> "" Then 
-			AddStyleAttribute(attr,val)
+			SetStyle(attr,val)
 		End If
 	Next
 	Return Me
@@ -340,7 +675,7 @@ Sub SetClassCenter As BANanoHTML
 	Return Me
 End Sub
 
-Sub GetStyleAttribute(attr As String) As String
+Sub GetStyleAttr(attr As String) As String
 	attr = attr.ToLowerCase
 	attr = RemDelim(attr,":")
 	attr = attr.trim
@@ -371,12 +706,12 @@ public Sub AddElementLine(el As BANanoHTML) As BANanoHTML
 End Sub
 
 
-Sub SetROLE(sValue As String) As BANanoHTML
+Sub SetAttrROLE(sValue As String) As BANanoHTML
 	AddAttribute("role",sValue)
 	Return Me
 End Sub
 
-Sub SetMETHOD(sValue As String) As BANanoHTML
+Sub SetAttrMETHOD(sValue As String) As BANanoHTML
 	AddAttribute("method",sValue)
 	Return Me
 End Sub
@@ -390,49 +725,49 @@ public Sub AddContentLine(value As String) As BANanoHTML
 	Return Me
 End Sub
 
-Sub SetTypeNumbers() As BANanoHTML
+Sub SetAttrTypeNumbers() As BANanoHTML
 	AddAttribute("type","1")
 	Return Me
 End Sub
 
-Sub SetTypeUpperCase() As BANanoHTML
+Sub SetAttrTypeUpperCase() As BANanoHTML
 	AddAttribute("type","A")
 	Return Me
 End Sub
 
-Sub SetTypeLowerCase() As BANanoHTML
+Sub SetAttrTypeLowerCase() As BANanoHTML
 	AddAttribute("type","a")
 	Return Me
 End Sub
 
-Sub SetTypeUpperCaseRoman() As BANanoHTML
+Sub SetAttrTypeUpperCaseRoman() As BANanoHTML
 	AddAttribute("type","I")
 	Return Me
 End Sub
 
-Sub SetTypeLowerCaseRoman() As BANanoHTML
+Sub SetAttrTypeLowerCaseRoman() As BANanoHTML
 	AddAttribute("type","i")
 	Return Me
 End Sub
 
 
-Sub SetListStyleCircle() As BANanoHTML
-	AddStyleAttribute("list-style-type","circle")
+Sub SetStyleListStyleCircle() As BANanoHTML
+	SetStyle("list-style-type","circle")
 	Return Me
 End Sub
 
-Sub SetListStyleDisk() As BANanoHTML
-	AddStyleAttribute("list-style-type","disk")
+Sub SetStyleListStyleDisk() As BANanoHTML
+	SetStyle("list-style-type","disk")
 	Return Me
 End Sub
 
-Sub SetListStyleNone() As BANanoHTML
-	AddStyleAttribute("list-style-type","none")
+Sub SetStyleListStyleNone() As BANanoHTML
+	SetStyle("list-style-type","none")
 	Return Me
 End Sub
 
-Sub SetListStyleSquare() As BANanoHTML
-	AddStyleAttribute("list-style-type","square")
+Sub SetStyleListStyleSquare() As BANanoHTML
+	SetStyle("list-style-type","square")
 	Return Me
 End Sub
 
@@ -478,8 +813,8 @@ Sub SetElementTypeOnCondition(bStatus As Boolean,sElementType As String) As BANa
 End Sub
 
 
-Sub SetZIndex(zindex As String) As BANanoHTML
-	AddStyleAttribute("z-index",zindex)
+Sub SetStyleZIndex(zindex As String) As BANanoHTML
+	SetStyle("z-index",zindex)
 	Return Me
 End Sub
 
@@ -494,24 +829,24 @@ Sub AddContentListReverse(lst As List) As BANanoHTML
 End Sub
 
 
-Sub SetFOR(sFor As String) As BANanoHTML
+Sub SetAttrFOR(sFor As String) As BANanoHTML
 	AddAttribute("for",sFor)
 	Return Me
 End Sub
 
 
-Sub SetVALUE(sValue As String) As BANanoHTML
+Sub SetAttrVALUE(sValue As String) As BANanoHTML
 	AddAttribute("value",sValue)
 	Return Me
 End Sub
 
 
-Sub SetNAME(sName As String) As BANanoHTML
+Sub SetAttrNAME(sName As String) As BANanoHTML
 	AddAttribute("name",sName)
 	Return Me
 End Sub
 
-Sub SetSUMMARY(sName As String) As BANanoHTML
+Sub SetAttrSUMMARY(sName As String) As BANanoHTML
 	AddAttribute("summary",sName)
 	Return Me
 End Sub
@@ -523,30 +858,30 @@ Sub SetCOLSPAN(sName As String) As BANanoHTML
 End Sub
 
 
-Sub SetLabel(l As String) As BANanoHTML
+Sub SetAttrLabel(l As String) As BANanoHTML
 	AddAttribute("label",l)
 	Return Me
 End Sub
 
 
-Sub SetRows(l As String) As BANanoHTML
+Sub SetAttrRows(l As String) As BANanoHTML
 	AddAttribute("rows",l)
 	Return Me
 End Sub
 
 
-Sub SetCols(l As String) As BANanoHTML
+Sub SetAttrCols(l As String) As BANanoHTML
 	AddAttribute("cols",l)
 	Return Me
 End Sub
 
 
-Sub SetROWSPAN(sName As String) As BANanoHTML
+Sub SetAttrROWSPAN(sName As String) As BANanoHTML
 	AddAttribute("rowspan",sName)
 	Return Me
 End Sub
 
-Sub SetTYPE(sValue As String) As BANanoHTML
+Sub SetAttrTYPE(sValue As String) As BANanoHTML
 	AddAttribute("type",sValue)
 	Return Me
 End Sub
@@ -649,7 +984,7 @@ Sub AddStyleOnCondition(bCondition As Boolean,attribute As String, value As Stri
 End Sub
 
 
-Sub SetSRC(sValue As String, Static As Boolean) As BANanoHTML
+Sub SetAttrSRC(sValue As String, Static As Boolean) As BANanoHTML
 	Dim tmpFile As String = MvField(sValue,1,"?")
 	If Static Then
 		sValue = tmpFile
@@ -661,14 +996,14 @@ Sub SetSRC(sValue As String, Static As Boolean) As BANanoHTML
 End Sub
 
 
-Sub SetALT(sValue As String) As BANanoHTML
+Sub SetAttrALT(sValue As String) As BANanoHTML
 	AddAttribute("alt",sValue)
 	Return Me
 End Sub
 
 Sub SetStyleWidth(Width As String) As BANanoHTML
 	If Width <> "" Then
-		AddStyleAttribute("width", MakePx(Width))
+		SetStyle("width", MakePx(Width))
 	End If
 	Return Me
 End Sub
@@ -676,14 +1011,14 @@ End Sub
 
 Sub SetStyleHeight(Height As String) As BANanoHTML
 	If Height <> "" Then
-		AddStyleAttribute("height", MakePx(Height))
+		SetStyle("height", MakePx(Height))
 	End If
 	Return Me
 End Sub
 
 Sub AddStyleAttributeOnCondition(bCondition As Boolean, attr As String, value As String) As BANanoHTML
 	If bCondition = True Then
-		AddStyleAttribute(attr,value)
+		SetStyle(attr,value)
 	End If
 	Return Me
 End Sub
@@ -695,7 +1030,7 @@ Sub AddAttributeOnCondition(bCondition As Boolean, attr As String, value As Stri
 	Return Me
 End Sub
 
-Sub GetAttribute(attr As String) As String
+Sub GetAttr(attr As String) As String
 	attr = attr.tolowercase
 	If properties.ContainsKey(attr) Then
 		Return properties.Get(attr)
@@ -708,7 +1043,7 @@ End Sub
 Sub ClassExists(value As String) As Boolean
 	value = value.trim
 	If value.Length > 0 Then
-		Return classes.ContainsKey(value)
+		Return Classes.ContainsKey(value)
 	End If
 	Return False
 End Sub
@@ -726,11 +1061,11 @@ Sub Pointer As String
 End Sub
 
 Sub AddCursor As BANanoHTML
-	AddStyleAttribute("cursor", "pointer")
+	SetStyle("cursor", "pointer")
 	Return Me
 End Sub
 
-Sub SetHREF(value As String) As BANanoHTML
+Sub SetAttrHREF(value As String) As BANanoHTML
 	AddAttribute("href",value)
 	Return Me
 End Sub
@@ -825,17 +1160,46 @@ Sub SetReadOnly(bReadOnly As Boolean) As BANanoHTML
 End Sub
 
 'set max
-Sub SetMax(m As Object) As BANanoHTML
+Sub SetAttrMax(m As Object) As BANanoHTML
 	SetAttr("max", m)
 	Return Me
 End Sub
 
 
 'set min
-Sub SetMin(m As Object) As BANanoHTML
-	SetAttr("min", m)
+Sub SetAttrMin(m As Object) As BANanoHTML
+	SetAttr("min", MakePx(m))
 	Return Me
 End Sub
+
+
+'set min width
+Sub SetAttrMinWidth(m As Object) As BANanoHTML
+	SetAttr("min-width", MakePx(m))
+	Return Me
+End Sub
+
+
+'set min height
+Sub SetAttrMinHeight(m As Object) As BANanoHTML
+	SetAttr("min-height", MakePx(m))
+	Return Me
+End Sub
+
+
+'set max width
+Sub SetAttrMaxWidth(m As Object) As BANanoHTML
+	SetAttr("max-width", MakePx(m))
+	Return Me
+End Sub
+
+
+'set max height
+Sub SetAttrMaxHeight(m As Object) As BANanoHTML
+	SetAttr("mnax-height", MakePx(m))
+	Return Me
+End Sub
+
 
 'set inline
 Sub SetInline(bInline As Boolean) As BANanoHTML
@@ -896,6 +1260,7 @@ Public Sub Initialize(elID As String) As BANanoHTML
 	Return Me
 End Sub
 
+'add as a child element
 Sub Pop(pElement As BANanoHTML)
 	pElement.AddElement(Me)
 End Sub
@@ -1056,8 +1421,8 @@ public Sub removeClass(className As String) As BANanoHTML
 	Dim sItems As List = StrParse(";",className)
 	For Each strStyle As String In sItems
 		strStyle = strStyle.Trim
-		If classes.ContainsKey(strStyle) Then 
-			classes.Remove(strStyle)
+		If Classes.ContainsKey(strStyle) Then 
+			Classes.Remove(strStyle)
 		End If
 	Next
 	Return Me
@@ -1084,12 +1449,12 @@ End Sub
 Sub BuildClass() As String
 	Dim sb As StringBuilder
 	sb.Initialize
-	Dim kTot As Int = classes.Size - 1
+	Dim kTot As Int = Classes.Size - 1
 	Dim kCnt As Int
-	Dim strClass As String  = classes.GetKeyAt(0)
+	Dim strClass As String  = Classes.GetKeyAt(0)
 	sb.Append(strClass)
 	For kCnt = 1 To kTot
-		Dim strClass As String  = classes.GetKeyAt(kCnt)
+		Dim strClass As String  = Classes.GetKeyAt(kCnt)
 		sb.Append(" ")
 		sb.Append(strClass)
 	Next
@@ -1447,16 +1812,16 @@ private Sub StrParse(Delim As String, InputString As String) As List
 End Sub
 
 'join list to a string
-'private Sub Join(delimiter As String, lst As List) As String
-'	Dim i As Int
-'	Dim sb As StringBuilder
-'	sb.Initialize
-'	sb.Append(lst.get(0))
-'	For i = 1 To lst.size - 1
-'		sb.Append(delimiter).Append(lst.get(i))
-'	Next
-'	Return sb.ToString
-'End Sub
+private Sub Join(delimiter As String, lst As List) As String
+	Dim i As Int
+	Dim sb As StringBuilder
+	sb.Initialize
+	sb.Append(lst.get(0))
+	For i = 1 To lst.size - 1
+		sb.Append(delimiter).Append(lst.get(i))
+	Next
+	Return sb.ToString
+End Sub
 
 'define the closure of the element
 private Sub Close() As String
@@ -1473,17 +1838,6 @@ private Sub Close() As String
 	End If
 	Return sb.tostring
 End Sub
-
-'get the attribute
-Sub GetAttr(attr As String) As String
-	attr = attr.tolowercase
-	If properties.ContainsKey(attr) Then
-		Return properties.Get(attr)
-	Else
-		Return ""
-	End If
-End Sub
-
 
 'set parent id
 Sub SetParentID(sParentID As String) As BANanoHTML
@@ -1534,7 +1888,7 @@ End Sub
 Sub AddMailTo(emailaddress As String,subject As String,caption As String) As BANanoHTML
 	subject = subject.Replace(" ", "%20")
 	Dim a As BANanoHTML
-	a.Initialize("a").setHREF($"mailto:${emailaddress}?subject=${subject}"$).AddContent(caption).SetTARGETblank(True)
+	a.Initialize("a").setAttrHREF($"mailto:${emailaddress}?subject=${subject}"$).AddContent(caption).SetAttrTARGETblank(True)
 	AddContent(a.ToString)
 	Return Me
 End Sub
@@ -1667,7 +2021,7 @@ End Sub
 'add a hyperlink that opens to blank
 Sub AddLink(href As String,caption As String,Target As String) As BANanoHTML
 	Dim a As BANanoHTML
-	a.Initialize("a").SetHREF(href).AddContent(caption).SetTARGET(Target)
+	a.Initialize("a").SetAttrHREF(href).AddContent(caption).SetAttrTARGET(Target)
 	AddElement(a)
 	Return Me
 End Sub
@@ -1716,14 +2070,14 @@ End Sub
 'create input search
 Sub CreateInputSearch(sid As String) As BANanoHTML
 	Dim s As BANanoHTML
-	s.Initialize("input").SetTYPE("search").SetID(sid)
+	s.Initialize("input").SetAttrTYPE("search").SetID(sid)
 	Return s
 End Sub
 
 'create input range
 Sub CreateInputRange(sid As String) As BANanoHTML
 	Dim s As BANanoHTML
-	s.Initialize("input").SetTYPE("range").SetID(sid)
+	s.Initialize("input").SetAttrTYPE("range").SetID(sid)
 	Return s
 End Sub
 
@@ -1862,7 +2216,7 @@ Sub CreateOL1(ulid As String, items As List) As BANanoHTML
 		optid = CStr(optid)
 		optval = CStr(optval)
 		thisoption.SetText(optval)
-		thisoption.SetVALUE(optid)
+		thisoption.SetAttrVALUE(optid)
 		ul.AddElement(thisoption)
 	Next
 	Return ul
@@ -2214,7 +2568,7 @@ Sub CreateSelect1(tid As String, options As List) As BANanoHTML
 		Dim optid As String = opt.Get("id")
 		Dim optval As String = opt.Get("value")
 		Dim thisoption As BANanoHTML = CreateOption("").SetText(optval)
-		thisoption.SetParentID(tid).SetVALUE(optid)
+		thisoption.SetParentID(tid).SetAttrVALUE(optid)
 		ta.AddElement(thisoption)
 	Next
 	Return ta
@@ -2222,7 +2576,7 @@ End Sub
 
 'create input text
 Sub CreateInputText(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("text")
+	Dim input As BANanoHTML = CreateInput(tid).SetAttrTYPE("text")
 	Return input
 End Sub
 
@@ -2235,84 +2589,94 @@ End Sub
 
 'create input button
 Sub CreateInputButton(tid As String, tValue As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("button").setvalue(tValue)
+	Dim input As BANanoHTML = CreateInput(tid).SetAttrTYPE("button").setattrvalue(tValue)
 	Return input
 End Sub
 
 'create input reset
 Sub CreateInputReset(tid As String, tValue As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("reset").setvalue(tValue)
+	Dim input As BANanoHTML = CreateInput(tid).SetAttrTYPE("reset").setattrvalue(tValue)
 	Return input
 End Sub
 
 'create input submit
 Sub CreateInputSubmit(tid As String, tValue As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("submit").setvalue(tValue)
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("submit").setattrvalue(tValue)
 	Return input
 End Sub
 
 'create input file
 Sub CreateInputFile(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("file")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("file")
 	Return input
 End Sub
 
 'create input date
 Sub CreateInputDate(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("date")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("date")
 	Return input
 End Sub
 
 'create input color
 Sub CreateInputColor(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("color")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("color")
 	Return input
 End Sub
 
 
 'create input email
 Sub CreateInputEmail(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("email")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("email")
 	Return input
 End Sub
 
 'create input password
 Sub CreateInputPassword(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("password")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("password")
 	Return input
 End Sub
 
 'create input checkbox
 Sub CreateInputCheckBox(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("checkbox").SetAttr("tabindex","0")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("checkbox").SetAttr("tabindex","0")
 	input.AddAttribute("autocomplete", "off")
 	Return input
+End Sub
+
+Sub SetAttrAutoCompleteOFF(b As Boolean) As BANanoHTML
+	SetAttr("autocomplete", "off")
+	Return Me
+End Sub
+
+Sub SetAttrTabIndex(tbi As String) As BANanoHTML
+	SetAttr("tabindex", tbi)
+	Return Me	
 End Sub
 
 
 'create input radio
 Sub CreateInputRadio(tid As String, tname As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("radio").SetAttr("tabindex","0").SetNAME(tname)
-	input.AddAttribute("autocomplete", "off")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("radio").SetAttrtabindex("0").SetattrNAME(tname)
+	input.SetAttrautocomplete("off")
 	Return input
 End Sub
 
 'create input tel
 Sub CreateInputTel(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("tel")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("tel")
 	Return input
 End Sub
 
 'create input tel
 Sub CreateInputUrl(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("url")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("url")
 	Return input
 End Sub
 
 
 'create input number
 Sub CreateInputNumber(tid As String) As BANanoHTML
-	Dim input As BANanoHTML = CreateInput(tid).SetTYPE("number")
+	Dim input As BANanoHTML = CreateInput(tid).SetattrTYPE("number")
 	Return input
 End Sub
 
